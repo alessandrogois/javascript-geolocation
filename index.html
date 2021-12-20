@@ -1,0 +1,32 @@
+<html>
+  <html lang="pr-br">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Geolocalização</title>
+    </head>
+    <body>
+      <h1>Sua localização atual:</h1>
+      <button id="find" onclick="">Find</button>
+      <h2></h2>
+      <script>
+        let h2 = document.querySelector('h2');
+        const find = document.getElementById('find');
+        find.addEventListener('onClick', console.log('Botão'));
+
+        function success(pos) {
+          h2.textContent = `Latitude: ${pos.coords.latitude}, Longitude: ${pos.coords.longitude}`;
+        }
+        function error(err) {
+          console.log(err);
+        }
+        var watchID = navigator.geolocation.watchPosition(success, error, {
+          enableHighAccuracy: true,
+          timeout: 5000,
+        });
+        //navigator.geolocation.clearWatch(watchID)
+      </script>
+    </body>
+  </html>
+</html>
